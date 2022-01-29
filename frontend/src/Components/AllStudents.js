@@ -8,16 +8,20 @@ import { Link } from 'react-router-dom';
 const useStyle = makeStyles({
     table: {
         width: '50%',
-        margin: '50px 0 0 50px'
+        margin: '5% 0 0 25%',
     },
     thead: {
         '& > *': {
+            fontSize: 20,
             background: '#000000',
-            color: '#ffffff',
-            fontsize: 20
+            color: '#FFFFFF'
         }
     },
-
+    row: {
+        '& > *': {
+            fontSize: 18
+        }
+    }
 })
 
 const AllStudents = () => {
@@ -57,11 +61,11 @@ const AllStudents = () => {
                 <TableBody>
                     {
                         data.map(studentinfo => (
-                            <TableRow key={studentinfo._id}>
+                            <TableRow className={classes.row} key={studentinfo._id}>
                                 <TableCell>{studentinfo.name}</TableCell>
                                 <TableCell>{studentinfo.age}</TableCell>
                                 <TableCell>
-                                    <Button variant='contained' color='primary' component={Link} to={`/view/${studentinfo._id}`}>View</Button>
+                                    <Button variant='contained' color='primary' style={{ marginRight: 10 }} component={Link} to={`/view/${studentinfo._id}`}>View</Button>
                                     <Button variant='contained' color='secondary' onClick={() => deleteUser(studentinfo._id)}>Delete</Button>
                                 </TableCell>
                             </TableRow>
